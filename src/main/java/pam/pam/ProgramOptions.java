@@ -1,5 +1,7 @@
 package pam.pam;
 
+import java.util.NoSuchElementException;
+
 public enum ProgramOptions {
     NAME_SEARCH("1", "Szukanie po nazwie"),
     NUMBER_SEARCH("2", "Szukanie po numerze"),
@@ -24,11 +26,20 @@ public enum ProgramOptions {
     }
 
     public static ProgramOptions fromId(String id) {
-        ProgramOptions[] values = values();
-        for (ProgramOptions optionId : values) {
-            if (optionId.getId().equals(id)) ;
-            return optionId;
+
+        for (ProgramOptions optionId : values()) {
+            if (optionId.getId().equals(id)) {
+                return optionId;
+            }
         }
         return null;
     }
+
+    //gdyby id było intem, tak jak powinno być ;)
+//    public static ProgramOptions fromId(int id) {
+//        if (id >= values().length || id < 0) {
+//            throw new NoSuchElementException();
+//        }
+//        return values()[id];
+//    }
 }

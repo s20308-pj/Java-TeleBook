@@ -2,7 +2,7 @@ package pam.pam;
 
 import java.util.Objects;
 
-public class Contact {
+public class Contact implements Comparable<Contact> {
 
     private String name;
     private String number;
@@ -44,9 +44,11 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "pam.pam.Contact{" +
-                "name='" + name + '\'' +
-                ", number='" + number + '\'' +
-                '}';
+        return name + " - " + number;
+    }
+
+    @Override
+    public int compareTo(Contact contact) {
+        return this.name.compareTo(contact.name);
     }
 }
